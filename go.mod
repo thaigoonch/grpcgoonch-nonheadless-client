@@ -1,4 +1,4 @@
-module github.com/thaigoonch/grpcgoonchclient
+module github.com/thaigoonch/grpcgoonchclient-pickfirst
 
 go 1.17
 

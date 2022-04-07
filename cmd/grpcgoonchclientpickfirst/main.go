@@ -27,10 +27,10 @@ func doClientThings(grpcMetrics *grpc_prometheus.ClientMetrics) {
 		host := "grpcgoonch-service"
 		opts := []grpc.DialOption{
 			grpc.WithInsecure(),
-			grpc.WithBalancerName("round_robin"),
+			grpc.WithBalancerName("pick_first"),
 			grpc.WithUnaryInterceptor(grpcMetrics.UnaryClientInterceptor()),
 		}
-		conn, err := grpc.Dial(fmt.Sprintf("dns:///%s:%d", host, port), opts...)
+		conn, err := grpc.Dial(fmt.Sprintf("%s:%d", host, port), opts...)
 		if err != nil {
 			grpclog.Fatalf("Could not connect on port %d: %v", port, err)
 		}
