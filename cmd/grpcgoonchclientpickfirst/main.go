@@ -11,7 +11,9 @@ import (
 	grpcgoonch "github.com/thaigoonch/grpcgoonch/service"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
+
 	//"google.golang.org/grpc/balancer/roundrobin"
+	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/grpclog"
 )
 
@@ -39,8 +41,8 @@ func main() {
 
 	host := "grpcgoonch-service"
 	opts := []grpc.DialOption{
-		grpc.WithInsecure(),
-		grpc.WithBalancerName("pick_first"),
+		grpc.WithDefaultServiceConfig(`{"loadBalancingConfig": [{"pick_first":{}}]}`),
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithUnaryInterceptor(grpcMetrics.UnaryClientInterceptor()),
 	}
 	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", host, port), opts...)
