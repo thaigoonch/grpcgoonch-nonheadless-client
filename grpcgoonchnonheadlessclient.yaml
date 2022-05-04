@@ -1,21 +1,21 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: grpcgoonchclient-pickfirst-cronjob
+  name: grpcgoonch-nonheadless-client-cronjob
   labels:
-    app: grpcgoonchclient-pickfirst
+    app: grpcgoonch-nonheadless-client
 spec:
   schedule: "0/8 * * * *"
   jobTemplate:
     metadata:
       labels:
-        app: grpcgoonchclient-pickfirst
+        app: grpcgoonch-nonheadless-client
     spec:
       template:
         spec:
           containers:
-          - name: grpcgoonchclient-pickfirst
-            image: thaigoonch/grpcgoonchclient-pickfirst:1.0
+          - name: grpcgoonch-nonheadless-client
+            image: thaigoonch/grpcgoonch-nonheadless-client:1.0
             imagePullPolicy: IfNotPresent
           restartPolicy: Never
           nodeSelector:
