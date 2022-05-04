@@ -8,11 +8,10 @@ import (
 	grpc_prometheus "github.com/grpc-ecosystem/go-grpc-prometheus"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	grpcgoonch "github.com/thaigoonch/grpcgoonch/service"
+	grpcgoonch "github.com/thaigoonch/grpcgoonch-headless/service"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
-	//"google.golang.org/grpc/balancer/roundrobin"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/grpclog"
 )
