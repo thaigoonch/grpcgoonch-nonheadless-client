@@ -62,7 +62,7 @@ func main() {
 	for i := 0; i < 10; i++ {
 		wg.Add(1)
 		go func() {
-			for i := 0; i < 200; i++ {
+			for i := 0; i < 500; i++ {
 				response, err := c.CryptoRequest(context.Background(), &request)
 				if err != nil {
 					grpclog.Fatalf("Error when calling CryptoRequest(): %v", err)
